@@ -16,7 +16,7 @@ export async function POST(req: Request) {
         name,
         nodes,
         edges,
-        userId, // 🔥 attach user
+        userId, //  attach user
       },
     });
 
@@ -36,7 +36,7 @@ export async function GET() {
     }
 
     const workflows = await prisma.workflow.findMany({
-      where: { userId }, // 🔥 filter by user
+      where: { userId }, // filter by user
       orderBy: { createdAt: "desc" },
     });
 

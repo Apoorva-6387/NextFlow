@@ -33,7 +33,7 @@ function Flow() {
   const [rfNodes, setRfNodes, onNodesChange] = useNodesState(nodes);
   const [rfEdges, setRfEdges, onEdgesChange] = useEdgesState(edges);
 
-  // 🔥 sync Zustand
+  //  sync Zustand
   useEffect(() => {
     setNodes(rfNodes);
   }, [rfNodes]);
