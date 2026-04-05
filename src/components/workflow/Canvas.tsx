@@ -13,6 +13,7 @@ import { useCallback } from "react";
 
 import NodeText from "./NodeText";
 import NodeImage from "./NodeImage";
+import NodeLLM from "./NodeLLM";
 
 let id = 1;
 const getId = () => `${id++}`;
@@ -20,6 +21,7 @@ const getId = () => `${id++}`;
 const nodeTypes = {
   text: NodeText,
   image: NodeImage,
+  llm: NodeLLM,
 };
 
 export default function Canvas() {
@@ -43,7 +45,7 @@ export default function Canvas() {
 
     const newNode = {
       id: getId(),
-      type: type, // 🔥 now dynamic (text, image, etc.)
+      type: type,
       position,
       data: {},
     };
