@@ -10,11 +10,13 @@ import ReactFlow, {
   ReactFlowProvider,
 } from "reactflow";
 import "reactflow/dist/style.css";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 import NodeText from "./NodeText";
 import NodeImage from "./NodeImage";
 import NodeLLM from "./NodeLLM";
+
+import { useStore } from "@/store/useStore";
 
 let id = 1;
 const getId = () => `${id++}`;
@@ -26,11 +28,22 @@ const nodeTypes = {
 };
 
 function Flow() {
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const { nodes, edges, setNodes, setEdges } = useStore();
+
+  const [rfNodes, setRfNodes, onNodesChange] = useNodesState(nodes);
+  const [rfEdges, setRfEdges, onEdgesChange] = useEdgesState(edges);
+
+  // 🔥 sync Zustand
+  useEffect(() => {
+    setNodes(rfNodes);
+  }, [rfNodes]);
+
+  useEffect(() => {
+    setEdges(rfEdges);
+  }, [rfEdges]);
 
   const onConnect = useCallback(
-    (params: Connection) => setEdges((eds) => addEdge(params, eds)),
+    (params: Connection) => setRfEdges((eds) => addEdge(params, eds)),
     []
   );
 
@@ -51,7 +64,7 @@ function Flow() {
       data: {},
     };
 
-    setNodes((nds) => nds.concat(newNode));
+    setRfNodes((nds) => nds.concat(newNode));
   }, []);
 
   const onDragOver = (event: any) => {
@@ -61,8 +74,8 @@ function Flow() {
 
   return (
     <ReactFlow
-      nodes={nodes}
-      edges={edges}
+      nodes={rfNodes}
+      edges={rfEdges}
       nodeTypes={nodeTypes}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
@@ -80,7 +93,6 @@ function Flow() {
 export default function Canvas() {
   return (
     <div className="flex-1">
-      {/* 🔥 THIS FIXES YOUR ERROR */}
       <ReactFlowProvider>
         <Flow />
       </ReactFlowProvider>

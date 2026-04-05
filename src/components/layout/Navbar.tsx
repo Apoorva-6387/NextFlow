@@ -1,8 +1,21 @@
 "use client";
 
+import { useStore } from "@/store/useStore";
+
 export default function Navbar() {
+  const { nodes, edges } = useStore();
+
   const saveWorkflow = async () => {
-    alert("⚠️ Save will work after we connect global state");
+    await fetch("/api/workflow", {
+      method: "POST",
+      body: JSON.stringify({
+        name: "My Workflow",
+        nodes,
+        edges,
+      }),
+    });
+
+    alert("✅ Workflow Saved!");
   };
 
   return (
