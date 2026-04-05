@@ -1,4 +1,4 @@
-# 🚀 NextFlow — AI Workflow Builder
+# NextFlow — AI Workflow Builder
 
 A modern **full-stack SaaS workflow builder** with AI integration, inspired by node-based editors like Krea.
 Built using **Next.js, Prisma, Neon DB, Clerk Auth, and Gemini AI**.
@@ -9,20 +9,20 @@ Built using **Next.js, Prisma, Neon DB, Clerk Auth, and Gemini AI**.
 
 ###  Core
 
-* 🧠 AI-powered workflow execution (Gemini API)
-* 🔗 Node-based workflow builder (React Flow)
-* 💾 Persistent workflows (PostgreSQL + Prisma)
-* 🔐 Authentication with Clerk
+*  AI-powered workflow execution (Gemini API)
+*  Node-based workflow builder (React Flow)
+*  Persistent workflows (PostgreSQL + Prisma)
+*  Authentication with Clerk
 
 ###  UI/UX
 
-* ✨ Glassmorphism + modern UI
-* ⚡ Smooth animations & transitions
-* 📱 Fully responsive
+*  Glassmorphism + modern UI
+*  Smooth animations & transitions
+*  Fully responsive
 
 ---
 
-## 🧱 Tech Stack
+## Tech Stack
 
 | Category | Technology               |
 | -------- | ------------------------ |
@@ -39,8 +39,6 @@ Built using **Next.js, Prisma, Neon DB, Clerk Auth, and Gemini AI**.
 ---
 
 ## 📁 Project Structure
-
-
 nextflow/
 ├── app/
 │   ├── api/
