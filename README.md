@@ -4,9 +4,9 @@ A modern **full-stack SaaS workflow builder** with AI integration using **Gemini
 
 ---
 
-##  Project Structure
+## 📂 Project Structure
 
-
+```bash
 nextflow/
 ├── app/                         # Next.js App Router
 │   ├── api/
@@ -34,7 +34,7 @@ nextflow/
 ├── .env.local                   # Environment variables
 ├── package.json
 └── README.md
-
+```
 
 ---
 
@@ -42,48 +42,48 @@ nextflow/
 
 ### 1️⃣ Clone the repository
 
-
+```bash
 git clone https://github.com/your-username/nextflow.git
 cd nextflow
-
+```
 
 ---
 
 ### 2️⃣ Install dependencies
 
-
+```bash
 npm install
-
+```
 
 ---
 
 ### 3️⃣ Setup environment variables
 
-Create `.env.local` file:
+Create a `.env.local` file:
 
-
+```env
 DATABASE_URL=your_neon_database_url
 GEMINI_API_KEY=your_gemini_api_key
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_key
 CLERK_SECRET_KEY=your_secret_key
-
+```
 
 ---
 
 ### 4️⃣ Setup database
 
-
+```bash
 npx prisma generate
 npx prisma db push
-
+```
 
 ---
 
 ### 5️⃣ Run the project
 
-
+```bash
 npm run dev
-
+```
 
 👉 Open: http://localhost:3000
 
@@ -91,16 +91,16 @@ npm run dev
 
 ## ✨ Features
 
-* 🧠 AI-powered workflows (Gemini API)
-* 🔗 Node-based workflow builder (React Flow)
-* 💾 Persistent data using Prisma + Neon
-* 🔐 Authentication with Clerk
-* 🎨 Modern UI with Tailwind CSS
-* ⚡ Fast performance with Next.js
+*  AI-powered workflows (Gemini API)
+*  Node-based workflow builder (React Flow)
+*  Persistent data using Prisma + Neon
+*  Authentication with Clerk
+*  Modern UI with Tailwind CSS
+*  Fast performance with Next.js
 
 ---
 
-## 🤖 AI Workflow System
+##  AI Workflow System
 
 * Drag & drop nodes
 * Connect via edges
@@ -113,7 +113,7 @@ npm run dev
 
 ---
 
-## 🔐 Authentication
+##  Authentication
 
 * Clerk-based authentication
 * Secure login & signup
@@ -121,7 +121,7 @@ npm run dev
 
 ---
 
-## 📸 Preview
+##  Preview
 
 ![Dashboard Preview](./dashboard.jpeg)
 
@@ -136,8 +136,8 @@ npm run dev
 ---
 
 ## 👨‍💻 Author
-
 Apoorva Singh
 
 ---
+
 
