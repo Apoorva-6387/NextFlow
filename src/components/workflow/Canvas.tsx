@@ -37,7 +37,17 @@ export default function Canvas() {
       id: getId(),
       type: "default",
       position,
-      data: { label: `${type} Node` },
+      data: { label: `${type.toUpperCase()} Node` },
+
+      // 🔥 BEAUTIFUL STYLE ADDED HERE
+      style: {
+        background: "#1e293b",
+        color: "white",
+        border: "1px solid #7c3aed",
+        borderRadius: "12px",
+        padding: 10,
+        boxShadow: "0 0 15px rgba(124, 58, 237, 0.6)",
+      },
     };
 
     setNodes((nds) => nds.concat(newNode));
@@ -60,7 +70,7 @@ export default function Canvas() {
         onDragOver={onDragOver}
         fitView
       >
-        <Background gap={16} />
+        <Background gap={16} color="#444" />
         <Controls />
       </ReactFlow>
     </div>
