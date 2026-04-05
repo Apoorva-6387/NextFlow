@@ -11,8 +11,14 @@ import ReactFlow, {
 import "reactflow/dist/style.css";
 import { useCallback } from "react";
 
+import NodeText from "./NodeText";
+
 let id = 1;
 const getId = () => `${id++}`;
+
+const nodeTypes = {
+  text: NodeText,
+};
 
 export default function Canvas() {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
@@ -35,19 +41,9 @@ export default function Canvas() {
 
     const newNode = {
       id: getId(),
-      type: "default",
+      type: type === "text" ? "text" : "default",
       position,
-      data: { label: `${type.toUpperCase()} Node` },
-
-      // 🔥 BEAUTIFUL STYLE ADDED HERE
-      style: {
-        background: "#1e293b",
-        color: "white",
-        border: "1px solid #7c3aed",
-        borderRadius: "12px",
-        padding: 10,
-        boxShadow: "0 0 15px rgba(124, 58, 237, 0.6)",
-      },
+      data: {},
     };
 
     setNodes((nds) => nds.concat(newNode));
@@ -63,6 +59,7 @@ export default function Canvas() {
       <ReactFlow
         nodes={nodes}
         edges={edges}
+        nodeTypes={nodeTypes}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
