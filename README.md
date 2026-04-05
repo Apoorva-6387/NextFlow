@@ -1,77 +1,46 @@
 # NextFlow — AI Workflow Builder
 
-A modern **full-stack SaaS workflow builder** with AI integration, inspired by node-based editors like Krea.
-Built using **Next.js, Prisma, Neon DB, Clerk Auth, and Gemini AI**.
+A modern **full-stack SaaS workflow builder** with AI integration using **Gemini API, Prisma, Neon DB, and Clerk Auth**.
 
 ---
 
-## ✨ Features
+##  Project Structure
 
-###  Core
 
-*  AI-powered workflow execution (Gemini API)
-*  Node-based workflow builder (React Flow)
-*  Persistent workflows (PostgreSQL + Prisma)
-*  Authentication with Clerk
-
-###  UI/UX
-
-*  Glassmorphism + modern UI
-*  Smooth animations & transitions
-*  Fully responsive
-
----
-
-## Tech Stack
-
-| Category | Technology               |
-| -------- | ------------------------ |
-| Frontend | Next.js 14, React        |
-| Styling  | Tailwind CSS             |
-| State    | Zustand                  |
-| Backend  | Next.js API Routes       |
-| Database | PostgreSQL (Neon)        |
-| ORM      | Prisma                   |
-| Auth     | Clerk                    |
-| AI       | Google Gemini API        |
-| Media    | FFmpeg (via Trigger.dev) |
-
----
-
-## 📁 Project Structure
 nextflow/
-├── app/
+├── app/                         # Next.js App Router
 │   ├── api/
-│   │   ├── generate/
-│   │   └── workflow/
-│   ├── sign-in/
+│   │   ├── generate/            # Gemini AI API
+│   │   └── workflow/            # Workflow CRUD APIs
+│   ├── sign-in/                 # Clerk auth pages
 │   ├── sign-up/
-│   └── page.tsx
+│   └── page.tsx                 # Main dashboard
 │
 ├── components/
-│   ├── layout/
-│   ├── workflow/
-│   └── ui/
+│   ├── layout/                  # Navbar, Sidebar
+│   ├── workflow/                # Nodes, Canvas, Logic
+│   └── ui/                      # Reusable UI components
 │
 ├── lib/
-│   └── prisma.ts
+│   └── prisma.ts                # Prisma client setup
 │
 ├── prisma/
-│   └── schema.prisma
+│   └── schema.prisma            # Database schema
 │
 ├── store/
-│   └── useStore.ts
+│   └── useStore.ts              # Zustand global state
 │
-├── styles/
-├── .env.local
+├── styles/                      # Global styles
+├── .env.local                   # Environment variables
+├── package.json
 └── README.md
 
 
 ---
 
-## ⚙️ Installation & Setup
+## ⚙️ Setup & Installation
 
-### 1️⃣ Clone Repo
+### 1️⃣ Clone the repository
 
 
 git clone https://github.com/your-username/nextflow.git
@@ -80,7 +49,7 @@ cd nextflow
 
 ---
 
-### 2️⃣ Install Dependencies
+### 2️⃣ Install dependencies
 
 
 npm install
@@ -88,11 +57,11 @@ npm install
 
 ---
 
-### 3️⃣ Setup Environment Variables
+### 3️⃣ Setup environment variables
 
-Create `.env.local`:
+Create `.env.local` file:
 
-env
+
 DATABASE_URL=your_neon_database_url
 GEMINI_API_KEY=your_gemini_api_key
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_key
@@ -101,75 +70,74 @@ CLERK_SECRET_KEY=your_secret_key
 
 ---
 
-### 4️⃣ Setup Database
+### 4️⃣ Setup database
 
-bash
+
 npx prisma generate
 npx prisma db push
 
 
 ---
 
-### 5️⃣ Run Project
+### 5️⃣ Run the project
+
 
 npm run dev
 
 
-👉 Open: [http://localhost:3000](http://localhost:3000)
+👉 Open: http://localhost:3000
 
 ---
 
-## 🧠 Workflow System
+## ✨ Features
+
+* 🧠 AI-powered workflows (Gemini API)
+* 🔗 Node-based workflow builder (React Flow)
+* 💾 Persistent data using Prisma + Neon
+* 🔐 Authentication with Clerk
+* 🎨 Modern UI with Tailwind CSS
+* ⚡ Fast performance with Next.js
+
+---
+
+## 🤖 AI Workflow System
 
 * Drag & drop nodes
 * Connect via edges
 * Supports:
 
-  * 📝 Text nodes
-  * 🖼 Image nodes
-  * 🎥 Video nodes
-  * 🤖 AI nodes
-
----
-
-## 🤖 AI Integration
-
-* Uses **Google Gemini API**
-* Supports:
-
-  * Text prompts
-  * Image input
-  * Node chaining
+  * Text nodes
+  * Image nodes
+  * Video nodes
+  * AI nodes
 
 ---
 
 ## 🔐 Authentication
 
-* Powered by **Clerk**
-* Secure login/signup
+* Clerk-based authentication
+* Secure login & signup
 * Protected routes
 
 ---
 
 ## 📸 Preview
 
-![App Screenshot](./dashboard.jpeg)
+![Dashboard Preview](./dashboard.jpeg)
 
 ---
 
 ## 🚀 Future Improvements
 
-* ⏳ Real-time collaboration
-* 📊 Workflow analytics
-* ☁️ Cloud storage
-* 🔁 Workflow templates
+* Real-time collaboration
+* Workflow templates
+* Analytics dashboard
 
 ---
 
 ## 👨‍💻 Author
 
-**Apoorva Singh**
+Apoorva Singh
 
 ---
-
 
