@@ -7,6 +7,7 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   Connection,
+  ReactFlowProvider,
 } from "reactflow";
 import "reactflow/dist/style.css";
 import { useCallback } from "react";
@@ -24,7 +25,7 @@ const nodeTypes = {
   llm: NodeLLM,
 };
 
-export default function Canvas() {
+function Flow() {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
@@ -59,21 +60,30 @@ export default function Canvas() {
   };
 
   return (
+    <ReactFlow
+      nodes={nodes}
+      edges={edges}
+      nodeTypes={nodeTypes}
+      onNodesChange={onNodesChange}
+      onEdgesChange={onEdgesChange}
+      onConnect={onConnect}
+      onDrop={onDrop}
+      onDragOver={onDragOver}
+      fitView
+    >
+      <Background gap={16} color="#444" />
+      <Controls />
+    </ReactFlow>
+  );
+}
+
+export default function Canvas() {
+  return (
     <div className="flex-1">
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        nodeTypes={nodeTypes}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
-        onDrop={onDrop}
-        onDragOver={onDragOver}
-        fitView
-      >
-        <Background gap={16} color="#444" />
-        <Controls />
-      </ReactFlow>
+      {/* 🔥 THIS FIXES YOUR ERROR */}
+      <ReactFlowProvider>
+        <Flow />
+      </ReactFlowProvider>
     </div>
   );
 }

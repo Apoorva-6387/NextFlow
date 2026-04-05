@@ -1,24 +1,8 @@
 "use client";
 
-import { useReactFlow } from "reactflow";
-
 export default function Navbar() {
-  const { getNodes, getEdges } = useReactFlow();
-
   const saveWorkflow = async () => {
-    const nodes = getNodes();
-    const edges = getEdges();
-
-    await fetch("/api/workflow", {
-      method: "POST",
-      body: JSON.stringify({
-        name: "My Workflow",
-        nodes,
-        edges,
-      }),
-    });
-
-    alert("✅ Workflow Saved!");
+    alert("⚠️ Save will work after we connect global state");
   };
 
   return (
