@@ -16,7 +16,6 @@ export default function NodeLLM({ id }: any) {
     const nodes = getNodes();
     const edges = getEdges();
 
-    // 🔥 Find connected node
     const connectedEdge = edges.find((e) => e.target === id);
 
     let finalInput = input;
@@ -29,11 +28,19 @@ export default function NodeLLM({ id }: any) {
       }
     }
 
-    // 🔥 Fake AI response
-    setTimeout(() => {
-      setOutput("✨ AI Response: " + finalInput);
-      setLoading(false);
-    }, 1000);
+    try {
+      const res = await fetch("/api/generate", {
+        method: "POST",
+        body: JSON.stringify({ prompt: finalInput }),
+      });
+
+      const data = await res.json();
+      setOutput(data.output);
+    } catch (err) {
+      setOutput("❌ Error generating response");
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -58,7 +65,7 @@ export default function NodeLLM({ id }: any) {
       </button>
 
       {output && (
-        <div className="text-xs bg-black p-2 rounded">
+        <div className="text-xs bg-black p-2 rounded max-h-32 overflow-auto">
           {output}
         </div>
       )}
