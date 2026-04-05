@@ -12,12 +12,14 @@ import "reactflow/dist/style.css";
 import { useCallback } from "react";
 
 import NodeText from "./NodeText";
+import NodeImage from "./NodeImage";
 
 let id = 1;
 const getId = () => `${id++}`;
 
 const nodeTypes = {
   text: NodeText,
+  image: NodeImage,
 };
 
 export default function Canvas() {
@@ -41,7 +43,7 @@ export default function Canvas() {
 
     const newNode = {
       id: getId(),
-      type: type === "text" ? "text" : "default",
+      type: type, // 🔥 now dynamic (text, image, etc.)
       position,
       data: {},
     };
