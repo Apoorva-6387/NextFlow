@@ -1,13 +1,18 @@
 const buttons = [
-  "Text",
-  "Image",
-  "Video",
-  "LLM",
-  "Crop",
-  "Frame",
+  { type: "text", label: "Text" },
+  { type: "image", label: "Image" },
+  { type: "video", label: "Video" },
+  { type: "llm", label: "LLM" },
+  { type: "crop", label: "Crop" },
+  { type: "frame", label: "Frame" },
 ];
 
 export default function SidebarLeft() {
+  const onDragStart = (event: any, type: string) => {
+    event.dataTransfer.setData("application/reactflow", type);
+    event.dataTransfer.effectAllowed = "move";
+  };
+
   return (
     <div className="w-64 p-4 glass border-r border-gray-800">
 
@@ -17,12 +22,14 @@ export default function SidebarLeft() {
 
       <div className="space-y-3">
         {buttons.map((btn) => (
-          <button
-            key={btn}
-            className="w-full p-3 rounded-xl bg-gray-800 hover:bg-purple-600 smooth"
+          <div
+            key={btn.type}
+            draggable
+            onDragStart={(e) => onDragStart(e, btn.type)}
+            className="p-3 rounded-xl bg-gray-800 hover:bg-purple-600 cursor-grab smooth"
           >
-            {btn}
-          </button>
+            {btn.label}
+          </div>
         ))}
       </div>
 
