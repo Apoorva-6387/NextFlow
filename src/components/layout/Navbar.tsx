@@ -1,4 +1,26 @@
+"use client";
+
+import { useReactFlow } from "reactflow";
+
 export default function Navbar() {
+  const { getNodes, getEdges } = useReactFlow();
+
+  const saveWorkflow = async () => {
+    const nodes = getNodes();
+    const edges = getEdges();
+
+    await fetch("/api/workflow", {
+      method: "POST",
+      body: JSON.stringify({
+        name: "My Workflow",
+        nodes,
+        edges,
+      }),
+    });
+
+    alert("✅ Workflow Saved!");
+  };
+
   return (
     <div className="h-16 flex items-center justify-between px-6 glass border-b border-gray-800">
 
@@ -6,8 +28,11 @@ export default function Navbar() {
         🚀 NextFlow
       </h1>
 
-      <button className="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg smooth glow">
-        + New Workflow
+      <button
+        onClick={saveWorkflow}
+        className="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg smooth glow"
+      >
+        💾 Save Workflow
       </button>
 
     </div>
