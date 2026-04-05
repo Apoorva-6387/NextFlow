@@ -1,167 +1,177 @@
-NextFlow — AI Workflow Builder (Krea-style Clone)
+# 🚀 NextFlow — AI Workflow Builder
 
-NextFlow is a pixel-perfect AI workflow builder inspired by Krea.ai.
-It allows users to visually design workflows using nodes like Text, Image, Video, and LLM, connect them, and execute AI-powered pipelines.
+A modern **full-stack SaaS workflow builder** with AI integration, inspired by node-based editors like Krea.
+Built using **Next.js, Prisma, Neon DB, Clerk Auth, and Gemini AI**.
 
-This project demonstrates full-stack SaaS architecture, including authentication, database persistence, workflow execution, and modern UI/UX.
+---
 
-🌟 Key Highlights
- Pixel-perfect UI inspired by Krea
- Node-based workflow builder (React Flow)
- AI integration using Google Gemini API
- Input chaining across nodes
- Authentication using Clerk
- Workflow persistence using PostgreSQL (Neon)
- Fast and modern stack (Next.js App Router)
- Beautiful UI (glassmorphism + glow effects)
-🛠 Tech Stack
-Category	Technology
-Frontend	Next.js 14+, React
-Styling	Tailwind CSS
-State	Zustand
-Workflow Engine	React Flow
-Backend	Next.js API Routes
-Database	PostgreSQL (Neon)
-ORM	Prisma
-Auth	Clerk
-AI	Google Gemini API
-File Upload	Transloadit
-Processing	FFmpeg (via Trigger.dev)
-📂 Complete Project Structure
+## ✨ Features
+
+###  Core
+
+* 🧠 AI-powered workflow execution (Gemini API)
+* 🔗 Node-based workflow builder (React Flow)
+* 💾 Persistent workflows (PostgreSQL + Prisma)
+* 🔐 Authentication with Clerk
+
+###  UI/UX
+
+* ✨ Glassmorphism + modern UI
+* ⚡ Smooth animations & transitions
+* 📱 Fully responsive
+
+---
+
+## 🧱 Tech Stack
+
+| Category | Technology               |
+| -------- | ------------------------ |
+| Frontend | Next.js 14, React        |
+| Styling  | Tailwind CSS             |
+| State    | Zustand                  |
+| Backend  | Next.js API Routes       |
+| Database | PostgreSQL (Neon)        |
+| ORM      | Prisma                   |
+| Auth     | Clerk                    |
+| AI       | Google Gemini API        |
+| Media    | FFmpeg (via Trigger.dev) |
+
+---
+
+## 📁 Project Structure
+
+
 nextflow/
+├── app/
+│   ├── api/
+│   │   ├── generate/
+│   │   └── workflow/
+│   ├── sign-in/
+│   ├── sign-up/
+│   └── page.tsx
+│
+├── components/
+│   ├── layout/
+│   ├── workflow/
+│   └── ui/
+│
+├── lib/
+│   └── prisma.ts
 │
 ├── prisma/
-│   ├── schema.prisma          # Database schema
+│   └── schema.prisma
 │
-├── public/                    # Static assets
+├── store/
+│   └── useStore.ts
 │
-├── src/
-│   │
-│   ├── app/                   # Next.js App Router
-│   │   ├── layout.tsx         # Root layout (ClerkProvider)
-│   │   ├── page.tsx           # Main dashboard page
-│   │   ├── globals.css        # Global styles (Tailwind + custom)
-│   │   │
-│   │   ├── sign-in/           # Clerk auth route
-│   │   │   └── [[...sign-in]]/
-│   │   │       └── page.tsx
-│   │   │
-│   │   ├── sign-up/           # Clerk auth route
-│   │   │   └── [[...sign-up]]/
-│   │   │       └── page.tsx
-│   │   │
-│   │   ├── api/               # Backend APIs
-│   │   │   ├── generate/      # Gemini AI API
-│   │   │   │   └── route.ts
-│   │   │   │
-│   │   │   └── workflow/      # Save & fetch workflows
-│   │   │       └── route.ts
-│   │
-│   ├── components/
-│   │   │
-│   │   ├── layout/            # UI layout components
-│   │   │   ├── Navbar.tsx
-│   │   │   ├── SidebarLeft.tsx
-│   │   │   └── SidebarRight.tsx
-│   │   │
-│   │   ├── workflow/          # Workflow nodes & canvas
-│   │   │   ├── Canvas.tsx
-│   │   │   ├── NodeText.tsx
-│   │   │   ├── NodeImage.tsx
-│   │   │   ├── NodeVideo.tsx
-│   │   │   ├── NodeLLM.tsx
-│   │   │   ├── NodeCrop.tsx
-│   │   │   └── NodeFrame.tsx
-│   │   │
-│   │   └── ui/                # Reusable UI components
-│   │       ├── Button.tsx
-│   │       └── Card.tsx
-│   │
-│   ├── store/
-│   │   └── useStore.ts        # Zustand global state
-│   │
-│   ├── lib/
-│   │   ├── prisma.ts          # Prisma client
-│   │   └── utils.ts           # Helper functions
-│
-├── .env.local                # Environment variables
-├── package.json
-├── tailwind.config.js
-├── postcss.config.js
+├── styles/
+├── .env.local
 └── README.md
-⚙️ Installation & Setup
-1️⃣ Clone the repository
+
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone Repo
+
+
 git clone https://github.com/your-username/nextflow.git
 cd nextflow
-2️⃣ Install dependencies
+
+
+---
+
+### 2️⃣ Install Dependencies
+
+
 npm install
-3️⃣ Setup environment variables
 
-Create .env.local:
 
+---
+
+### 3️⃣ Setup Environment Variables
+
+Create `.env.local`:
+
+env
 DATABASE_URL=your_neon_database_url
 GEMINI_API_KEY=your_gemini_api_key
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_key
 CLERK_SECRET_KEY=your_secret_key
-4️⃣ Setup database
-npx prisma migrate dev
+
+
+---
+
+### 4️⃣ Setup Database
+
+bash
 npx prisma generate
-5️⃣ Run the project
+npx prisma db push
+
+
+---
+
+### 5️⃣ Run Project
+
 npm run dev
- Core Features Explained
-🔹 1. Workflow Canvas
-Built using React Flow
-Supports drag, drop, zoom, pan
-Nodes connected via edges
-🔹 2. Node Types
-Node	Function
-Text Node	Input text
-Image Node	Upload image
-Video Node	Upload video
-LLM Node	AI processing
-Crop Node	Image editing
-Frame Node	Extract video frame
-🔹 3. LLM Integration
-Uses Google Gemini API
-Accepts:
-system prompt
-user message
-images
-Output displayed directly on node
-🔹 4. Authentication
-Powered by Clerk
-Secure login/signup
-User session handling
-🔹 5. Workflow Persistence
-Stored in PostgreSQL
-Linked to userId
-Loaded in history panel
-🔄 Sample Workflow (How it works)
-Upload image
-Crop image
-Add text prompt
-Send to LLM
-Generate AI output
 
- Learning Outcomes
-Full-stack SaaS development
-API integration with AI
-Database design with Prisma
-Authentication system
-Advanced UI/UX design
-Workflow engine logic
 
-👨‍💻 Author
+👉 Open: [http://localhost:3000](http://localhost:3000)
 
-Apoorva Singh
-B.Tech MAE | Web Developer
+---
 
-⭐ Conclusion
+## 🧠 Workflow System
 
-NextFlow is a powerful AI workflow builder that combines modern frontend technologies, backend architecture, and AI capabilities into a single interactive application.
+* Drag & drop nodes
+* Connect via edges
+* Supports:
 
-This project is ideal for:
+  * 📝 Text nodes
+  * 🖼 Image nodes
+  * 🎥 Video nodes
+  * 🤖 AI nodes
 
-Internship portfolios
-Startup prototypes
-Full-stack learning
+---
+
+## 🤖 AI Integration
+
+* Uses **Google Gemini API**
+* Supports:
+
+  * Text prompts
+  * Image input
+  * Node chaining
+
+---
+
+## 🔐 Authentication
+
+* Powered by **Clerk**
+* Secure login/signup
+* Protected routes
+
+---
+
+## 📸 Preview
+
+![App Screenshot](./dashboard.jpeg)
+
+---
+
+## 🚀 Future Improvements
+
+* ⏳ Real-time collaboration
+* 📊 Workflow analytics
+* ☁️ Cloud storage
+* 🔁 Workflow templates
+
+---
+
+## 👨‍💻 Author
+
+**Apoorva Singh**
+
+---
+
+
