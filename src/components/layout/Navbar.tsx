@@ -1,6 +1,7 @@
 "use client";
 
 import { useStore } from "@/store/useStore";
+import { UserButton } from "@clerk/nextjs";
 
 export default function Navbar() {
   const { nodes, edges } = useStore();
@@ -25,12 +26,16 @@ export default function Navbar() {
         🚀 NextFlow
       </h1>
 
-      <button
-        onClick={saveWorkflow}
-        className="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg smooth glow"
-      >
-        💾 Save Workflow
-      </button>
+      <div className="flex items-center gap-4">
+        <button
+          onClick={saveWorkflow}
+          className="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg smooth glow"
+        >
+          💾 Save
+        </button>
+
+        <UserButton />
+      </div>
 
     </div>
   );
