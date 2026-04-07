@@ -6,7 +6,7 @@ A modern **full-stack SaaS workflow builder** with AI integration using **Gemini
 ## 📊 Dashboard Preview
 
 <p align="center">
-  <img src="./assets/DashBoard.jpeg" alt="Dashboard" width="100%" />
+  <img src="./public/assets/DashBoard.jpeg" alt="Dashboard" width="100%" />
 </p>
 ---
 
