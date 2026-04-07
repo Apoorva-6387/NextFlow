@@ -3,6 +3,12 @@
 A modern **full-stack SaaS workflow builder** with AI integration using **Gemini API, Prisma, Neon DB, and Clerk Auth**.
 
 ---
+## 📊 Dashboard Preview
+
+<p align="center">
+  <img src="./assets/DashBoard.jpeg" alt="Dashboard" width="100%" />
+</p>
+---
 
 ## 📂 Project Structure
 
@@ -121,13 +127,7 @@ npm run dev
 
 ---
 
-##  Preview
-
-![Dashboard Preview](./dashboard.jpeg)
-
----
-
-## 🚀 Future Improvements
+## Future Improvements
 
 * Real-time collaboration
 * Workflow templates
@@ -135,7 +135,7 @@ npm run dev
 
 ---
 
-## 👨‍💻 Author
+##  Author
 Apoorva Singh
 
 ---
