@@ -1,3 +1,4 @@
+import { NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export async function POST(req: Request) {
@@ -12,5 +13,5 @@ export async function POST(req: Request) {
   const result = await model.generateContent(prompt);
   const response = result.response.text();
 
-  return Response.json({ output: response });
+  return NextResponse.json({ output: response });
 }

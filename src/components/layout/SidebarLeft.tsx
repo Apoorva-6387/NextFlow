@@ -15,7 +15,7 @@ export default function SidebarLeft() {
     event.dataTransfer.effectAllowed = "move";
   };
 
-  return (
+return (
     <div className="w-64 p-4 glass border-r border-gray-800">
       
       <h2 className="mb-4 text-lg font-semibold text-purple-300">

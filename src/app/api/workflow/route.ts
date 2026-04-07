@@ -1,3 +1,4 @@
+import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 
@@ -20,9 +21,12 @@ export async function POST(req: Request) {
       },
     });
 
-    return Response.json(workflow);
+    return NextResponse.json(workflow);
   } catch (error) {
-    return new Response("Error", { status: 500 });
+    console.error("/api/workflow POST error", error);
+    const message =
+      error instanceof Error ? error.message : typeof error === "string" ? error : "Unknown error";
+    return new Response(message, { status: 500 });
   }
 }
 
@@ -40,8 +44,11 @@ export async function GET() {
       orderBy: { createdAt: "desc" },
     });
 
-    return Response.json(workflows);
+    return NextResponse.json(workflows);
   } catch (error) {
-    return new Response("Error", { status: 500 });
+    console.error("/api/workflow GET error", error);
+    const message =
+      error instanceof Error ? error.message : typeof error === "string" ? error : "Unknown error";
+    return new Response(message, { status: 500 });
   }
 }

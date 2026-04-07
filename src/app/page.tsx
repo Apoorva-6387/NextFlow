@@ -1,25 +1,29 @@
 "use client";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import SidebarLeft from "@/components/layout/SidebarLeft";
 import SidebarRight from "@/components/layout/SidebarRight";
 import Canvas from "@/components/workflow/Canvas";
 import Navbar from "@/components/layout/Navbar";
 
-import { useUser, SignIn } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 
 export default function Home() {
   const { isSignedIn } = useUser();
+  const router = useRouter();
 
-  // 🔐 Not logged in
+  useEffect(() => {
+    if (!isSignedIn) {
+      router.replace("/sign-in");
+    }
+  }, [isSignedIn, router]);
+
   if (!isSignedIn) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <SignIn />
-      </div>
-    );
+    return null;
   }
 
-  // ✅ Logged in
+  // Logged in
   return (
     <div className="h-screen flex flex-col">
       <Navbar />
